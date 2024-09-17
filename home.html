@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram - Secure Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #f3f3f3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    .message-box {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      width: 400px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    #username {
+      color: #0095f6;
+    }
+
+    p {
+      margin: 10px 0;
+      color: #333;
+    }
+
+    .status-box {
+      margin-top: 20px;
+      background-color: #f0f0f0;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: #0095f6;
+    }
+
+    .status p {
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    .status-label {
+      font-weight: bold;
+      color: #666;
+    }
+
+    #logout-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #0095f6;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #logout-btn:hover {
+      background-color: #007bb5;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="message-box">
+      <h1>Welcome, <span id="username">[Username]</span>!</h1>
+      <p>We're happy to inform you that your account is <strong>100% secure</strong>!</p>
+      <p>Only you are currently logged in. No suspicious activity detected.</p>
+      <div class="status-box">
+        <h2>Account Status</h2>
+        <div class="status">
+          <p><span class="status-label">Login Location:</span> Your current location</p>
+          <p><span class="status-label">IP Address:</span> (Hidden for your safety)</p>
+          <p><span class="status-label">Device:</span> Securely connected</p>
+          <p><span class="status-label">Security Check:</span> Passed ✔️</p>
+        </div>
+      </div>
+      <p style="color: green;"><strong>You're the only one accessing this account right now.</strong> You're all set! 😊</p>
+      <button id="logout-btn">Log Out Safely</button>
+    </div>
+  </div>
+
+  <script>
+    // Retrieve and display the stored username from localStorage
+    const storedUsername = localStorage.getItem('username');
+    if (storedUsername) {
+      document.getElementById('username').textContent = storedUsername;
+    } else {
+      document.getElementById('username').textContent = 'Guest';
+    }
+
+    // Logout functionality
+    document.getElementById('logout-btn').addEventListener('click', function() {
+      // Remove the username from localStorage
+      localStorage.removeItem('username');
+
+      // Alert the user and redirect to the login page
+      alert('You have logged out safely. Goodbye!');
+      window.location.href = 'index.html'; // Redirect to the login page
+    });
+  </script>
+</body>
+</html>
